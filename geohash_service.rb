@@ -1,0 +1,3 @@
+class GeohashService
+
+end
