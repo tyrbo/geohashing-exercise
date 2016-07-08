@@ -10,12 +10,12 @@ class GeohashService
   end
 
   def call
-    response = YahooQueryService.new(symbol: "^NDX").fetch_opening_price
+    open = YahooQueryService.new(symbol: "^NDX").fetch_opening_price
 
     destination = DestinationService.new(
       latitude: @latitude,
       longitude: @longitude,
-      response: response
+      open: open
     ).calculate_destination
 
     destination.to_json

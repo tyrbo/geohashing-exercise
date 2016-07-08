@@ -7,15 +7,14 @@ class YahooQueryService
   end
 
   def fetch_opening_price
-    quotes = JSON.parse(fetch_body)["query"]["results"]["quote"]
-    quote = quotes.detect { |x| x["symbol"] == @symbol }
+    quote = JSON.parse(fetch_body)["query"]["results"]["quote"]
     quote["Open"]
   end
 
   private
 
   def fetch_body
-    Net::HTTP.get(URI(url)).body
+    Net::HTTP.get(URI(url))
   end
 
   def url

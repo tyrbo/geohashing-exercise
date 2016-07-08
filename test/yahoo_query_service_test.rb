@@ -8,9 +8,8 @@ require "yahoo_query_service"
 class YahooQueryServiceTest < Minitest::Test
   def test_fetch_opening_price
     query = YahooQueryService.new(symbol: "^NDX")
-    response = stub(body: json)
 
-    Net::HTTP.stubs(:get).returns(response)
+    Net::HTTP.stubs(:get).returns(json)
 
     assert_equal query.fetch_opening_price, "4484.92"
   end
@@ -19,14 +18,10 @@ class YahooQueryServiceTest < Minitest::Test
     {
       query: {
         results: {
-          quote: [{
+          quote: {
             "symbol" => "^NDX",
             "Open" => "4484.92"
-          },
-          {
-            "symbol" => "ABC",
-            "Open" => "123.50",
-          }]
+          }
         }
       }
     }.to_json
