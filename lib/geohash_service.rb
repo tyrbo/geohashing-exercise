@@ -1,7 +1,7 @@
 require "json"
 
-require "destination_service"
-require "yahoo_query_service"
+require_relative "./destination_service"
+require_relative "./yahoo_query_service"
 
 class GeohashService
   def initialize(latitude:, longitude:)

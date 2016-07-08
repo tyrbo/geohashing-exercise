@@ -4,6 +4,8 @@ Bundler.require
 require "sinatra"
 require "json"
 
+require_relative "./lib/geohash_service"
+
 module GeohashingExercise
   class Application < Sinatra::Base
     get "/geohash" do
